@@ -1,21 +1,20 @@
 import { Routes } from '@angular/router';
-import { CartComponent } from '../components';
+import { ErrorComponent } from '../components';
 
 export const APP_ROUTES: Routes = [
   {
     path: '',
-    redirectTo: 'products',
-    pathMatch: 'full',
-  },
-  {
-    path: 'products',
     loadChildren: () =>
-      import('../modules/products/products.module').then(
-        (m) => m.ProductsModule
+      import('../modules/main/main.module').then(
+        (m) => m.MainModule
       ),
   },
   {
-    path: 'cart',
-    component: CartComponent,
+    path: 'error',
+    component: ErrorComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'error',
   },
 ];
