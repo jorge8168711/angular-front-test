@@ -1,1 +1,50 @@
-<p>product detail</p>
+<div class="bg-white rounded-md shadow" *ngIf="loading; else detail">
+  <div class="flex flex-wrap animate-pulse">
+    <div class="w-full p-4 sm:p-10 sm:w-5/12">
+      <div class="h-48 bg-gray-400 sm:h-full"></div>
+    </div>
+
+    <div class="w-full p-4 sm:p-10 sm:w-7/12">
+      <div class="h-8 mb-2 bg-gray-400"></div>
+      <div class="w-24 h-3 mb-8 bg-gray-400"></div>
+
+      <div class="w-20 h-4 mb-4 bg-gray-400"></div>
+      <div class="h-2 mb-2 bg-gray-400"></div>
+      <div class="h-2 mb-2 bg-gray-400"></div>
+      <div class="h-2 mb-2 bg-gray-400"></div>
+      <div class="h-2 mb-2 bg-gray-400"></div>
+      <div class="h-2 mb-2 bg-gray-400"></div>
+      <div class="w-64 h-2 bg-gray-400"></div>
+
+      <div class="w-32 h-6 mt-8 bg-gray-400"></div>
+    </div>
+  </div>
+</div>
+
+<ng-template #detail>
+  <div class="flex flex-wrap bg-white rounded-md shadow">
+    <div class="w-full p-4 sm:p-10 sm:w-5/12">
+      <img class="w-full m-auto" [src]="data?.image" [alt]="data?.title" />
+    </div>
+
+    <div class="w-full p-4 font-bold text-gray-700 sm:p-10 sm:w-7/12">
+      <h2 class="text-2xl">{{ data?.title }}</h2>
+      <p class="text-xs tracking-wider text-gray-500 uppercase">
+        {{ data?.category }}
+      </p>
+
+      <p class="mt-8 text-blue-400">Description</p>
+      <p class="text-sm font-light leading-normal tracking-wider text-gray-500">
+        {{ data?.description }}
+      </p>
+
+      <p class="my-8 text-xl text-gray-800">
+        {{ data?.price | currency: "USD" }}
+      </p>
+
+      <button class="px-8 py-2 text-sm font-bold text-white bg-blue-400 rounded appearance-none" type="button">
+        ADD TO CART
+      </button>
+    </div>
+  </div>
+</ng-template>

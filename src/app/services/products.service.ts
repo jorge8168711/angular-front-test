@@ -14,4 +14,8 @@ export class ProductsService {
   getProducts(): Promise<Product[]> {
     return this.http.get<Product[]>(`${this.API_URL}/products`).toPromise();
   }
+
+  getProductById(id: number): Promise<Product> {
+    return this.http.get<Product>(`${this.API_URL}/products/${id}`).toPromise();
+  }
 }
