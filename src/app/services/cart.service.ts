@@ -23,4 +23,24 @@ export class CartService {
 
     this.cartItemsChanged.next(this._items);
   }
+
+  deleteProduct(index: number): void {
+    this._items.splice(index, 1);
+    this.cartItemsChanged.next(this._items);
+  }
+
+  reduceQty(index: number): void {
+    const item = this._items[index];
+    if (item.quantity === 0) {
+      this.deleteProduct(index);
+    }
+
+    if (item.quantity > 0) {
+      item.quantity -= 1;
+    }
+  }
+
+  increaseQty(index: number): void {
+    this._items[index].quantity += 1;
+  }
 }

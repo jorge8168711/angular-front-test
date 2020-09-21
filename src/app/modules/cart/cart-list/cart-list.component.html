@@ -1,0 +1,65 @@
+<h2 class="mb-6 text-2xl font-bold text-gray-700">Shopping cart</h2>
+
+<div class="p-4 mb-4 bg-white rounded-md shadow">
+  <table class="w-full text-sm text-left text-gray-600">
+    <thead>
+      <tr class="font-bold">
+        <th class="pb-2">Product</th>
+        <th class="pb-2 text-center">Quantity</th>
+        <th class="pb-2 text-center">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-t" *ngFor="let product of products; let i=index">
+        <td class="p-4">
+          <div class="flex">
+            <div class="flex w-16">
+              <img
+                class="w-full"
+                [src]="product?.image"
+                [alt]="product?.title"
+                loading="lazy" />
+            </div>
+
+            <div class="pl-4">
+              <a
+                [routerLink]="['/products', product?.id]"
+                class="mb-1 text-gray-700 hover:text-blue-500">
+                {{ product?.title }}
+              </a>
+              <p
+                class="mb-2 font-bold tracking-wider text-gray-500 uppercase text-xxs">
+                {{ product?.category }}
+              </p>
+
+              <button (click)="delete(i)"
+                class="text-xs font-bold text-red-500 appearance-none hover:text-red-700" type="button">
+                DELETE
+              </button>
+            </div>
+          </div>
+        </td>
+
+        <td class="text-center">
+          <div class="flex items-center">
+            <button (click)="reduceProductQty(i)" class="p-2 mr-2 text-base font-bold text-blue-500 appearance-none" type="button">-</button>
+            {{ product.quantity }}
+            <button (click)="increaseProductQty(i)" class="p-2 ml-2 text-base font-bold text-blue-500 appearance-none" type="button">+</button>
+          </div>
+        </td>
+        <td class="text-center">{{ product.price | currency: "USD" }}</td>
+      </tr>
+
+      <tr class="border-t" *ngIf="products.length">
+        <td class="pt-4 pr-6 text-right" colspan="3">
+          <strong class="pr-4 font-bold text-gray-700">TOTAL:</strong>
+          {{ getTotalPrice(products) | currency: "USD" }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!products.length" class="p-6 text-xl font-bold text-center">
+    Your cart is empty
+  </div>
+</div>
