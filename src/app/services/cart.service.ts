@@ -33,14 +33,17 @@ export class CartService {
     const item = this._items[index];
     if (item.quantity === 0) {
       this.deleteProduct(index);
+      this.cartItemsChanged.next(this._items);
     }
 
     if (item.quantity > 0) {
       item.quantity -= 1;
+      this.cartItemsChanged.next(this._items);
     }
   }
 
   increaseQty(index: number): void {
     this._items[index].quantity += 1;
+    this.cartItemsChanged.next(this._items);
   }
 }
