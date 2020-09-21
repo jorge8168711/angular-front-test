@@ -1,0 +1,35 @@
+<header class="w-full p-4 bg-white shadow">
+  <nav class="flex items-center w-full max-w-screen-lg mx-auto">
+    <div class="flex items-center">
+      <h1 class="text-base font-bold text-blue-700 sm:text-xl">E-Commerce</h1>
+    </div>
+
+    <div class="h-8 mx-3 border-r border-gray-400 sm:mx-4"></div>
+
+    <ul class="flex items-center text-xs text-gray-500 sm:text-sm">
+      <li class="flex items-center mr-4 font-bold sm:mr-8">
+        <a
+          class="flex items-center"
+          [routerLink]="['/products']"
+          routerLinkActive="text-blue-500" >
+          <svg class="mr-2" width="22" height="13">
+            <use href="assets/img/icons.svg#fa-store" />
+          </svg>
+          Products
+        </a>
+      </li>
+
+      <li class="flex items-center mr-4 sm:mr-8">
+        <a
+          class="flex items-center"
+          [routerLink]="['cart']"
+          routerLinkActive="text-blue-500" >
+          <svg class="mr-2" width="22" height="13">
+            <use href="assets/img/icons.svg#fa-shopping-cart" />
+          </svg>
+          Cart
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -1,3 +1,11 @@
-<p class='bg-red-500'>
-  products-list works!
-</p>
+<section class="flex flex-wrap mt-8 -ml-4 -mr-4">
+  <div *ngIf="loading; else list">Loading...</div>
+
+  <ng-template #list>
+    <div
+      class="w-full px-4 mb-4 md:w-3/12 sm:w-6/12"
+      *ngFor="let product of products; trackBy: trackByFn">
+      <app-product-item [data]="product"></app-product-item>
+    </div>
+  </ng-template>
+</section>
