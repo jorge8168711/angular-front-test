@@ -9,6 +9,8 @@ import { ProductsService } from 'src/app/services';
 export class ProductsListComponent implements OnInit {
   products: Product[] = [];
   loading = false;
+  filter = '';
+  filters = ['men clothing', 'jewelery', 'electronics', 'women clothing'];
 
   constructor(private service: ProductsService) {}
 
@@ -20,7 +22,11 @@ export class ProductsListComponent implements OnInit {
     });
   }
 
-  public trackByFn(index: number, item: Product): number {
+  trackByFn(index: number, item: Product): number {
     return item.id;
+  }
+
+  setFilter(val: string): void {
+    this.filter = val;
   }
 }

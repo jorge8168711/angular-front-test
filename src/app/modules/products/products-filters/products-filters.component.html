@@ -1,0 +1,21 @@
+<ul class="flex flex-wrap py-2 my-8 border-b border-gray-400">
+  <li>
+    <button
+      [ngClass]="{'bg-blue-500 text-white shadow': currentFilter === ''}"
+      class="flex px-2 py-1 mb-2 rounded appearance-none text-xxs"
+      (click)="filterBy('')"
+      type="button">
+      <span class="m-auto font-bold tracking-wider uppercase">All</span>
+    </button>
+  </li>
+
+  <li class="mx-1" *ngFor="let filter of filters; trackBy: trackByFn">
+    <button
+      [ngClass]="{'bg-blue-500 text-white shadow': currentFilter === filter}"
+      class="flex px-2 py-1 mb-2 rounded appearance-none text-xxs"
+      (click)="filterBy(filter)"
+      type="button">
+      <span class="m-auto font-bold tracking-wider uppercase">{{ filter }}</span>
+    </button>
+  </li>
+</ul>

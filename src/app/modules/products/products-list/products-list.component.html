@@ -1,11 +1,22 @@
-<section class="flex flex-wrap mt-8 -ml-4 -mr-4">
-  <div *ngIf="loading; else list">Loading...</div>
+<section class="flex flex-wrap -ml-3 -mr-3" *ngIf="loading; else list">
+  <div class="w-full px-3 mb-6 md:w-3/12 sm:w-6/12" *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]">
+    <app-product-skeleton></app-product-skeleton>
+  </div>
+</section>
 
-  <ng-template #list>
-    <div
-      class="w-full px-4 mb-4 md:w-3/12 sm:w-6/12"
-      *ngFor="let product of products; trackBy: trackByFn">
+<ng-template #list>
+  <app-products-filters
+    [filters]="filters"
+    [filter]="filter"
+    (selectFilter)="setFilter($event)">
+  </app-products-filters>
+
+  <section class="flex flex-wrap -ml-3 -mr-3">
+    <div class="w-full px-3 mb-6 md:w-3/12 sm:w-6/12"
+      *ngFor="
+        let product of products | filterProducts: filter;
+        trackBy: trackByFn">
       <app-product-item [data]="product"></app-product-item>
     </div>
-  </ng-template>
-</section>
+  </section>
+</ng-template>
