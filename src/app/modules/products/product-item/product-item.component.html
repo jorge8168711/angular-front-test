@@ -19,7 +19,7 @@
       {{ data?.price | currency: "USD" }}
     </p>
 
-    <button class="w-20 p-2 font-bold text-white bg-blue-400 rounded appearance-none text-xxs" type="button">
+    <button (click)="addToCart(data)" class="w-20 p-2 font-bold text-white bg-blue-400 rounded appearance-none text-xxs" type="button">
       ADD TO CART
     </button>
   </div>
